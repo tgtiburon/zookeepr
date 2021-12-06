@@ -1,4 +1,4 @@
-const exp = require('constants');
+
 const express = require('express');
 const fs = require('fs');
 // path is built into node.js API that makes working
@@ -43,6 +43,11 @@ const app = express();
 app.use(express.urlencoded({ extended : true}));
 // parse incoming JSON data
 app.use(express.json());
+
+// used to allow css and style
+// we allow everything in the public folder to be used
+// this way we dont need specific endpoints for everything
+app.use(express.static('public'));
 
 function filterByQuery(query, animalsArray)   {
 
@@ -174,7 +179,7 @@ app.post('/api/animals', (req, res) => {
          // add animal to json file and animals array
     const animal = createNewAnimal(req.body, animals);
 
-    res.json(req.body);
+    res.json(animal);
 
 
 
@@ -186,6 +191,25 @@ app.post('/api/animals', (req, res) => {
 
 
 
+// public/index.html because it serves a webpage.
+// if it did more it would be /public/api/   
+app.get('/', (req, res)=> {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+
+});
+
+app.get('/animals', (req, res)=>{
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+app.get('/zookeepers', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+// order of routes is important....* should always be last
+app.get('*', (req, res)=> {
+
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
 
 
 
