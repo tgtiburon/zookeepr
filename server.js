@@ -65,6 +65,11 @@ function filterByQuery(query, animalsArray)   {
     }
     return filteredResults;
 }
+
+function findById(id, animalsArray) {
+    const result = animalsArray.filter(animal => animal.id === id)[0];
+    return result;
+}
 app.get('/api/animals', (req, res) => {
     // we are using the send method from the response to send a string
     //res.send('Hello!');
@@ -78,6 +83,17 @@ app.get('/api/animals', (req, res) => {
 
     res.json(results);
 
+});
+// A param route needs to come after the other route
+app.get('/api/animals/:id', (req, res)=> {
+    const result = findById(req.params.id, animals);
+
+    if(result) {
+        res.json(result);
+    } else {
+        res.send(404);//not found
+    }
+    
 });
 
 app.listen(PORT, ()=> {
