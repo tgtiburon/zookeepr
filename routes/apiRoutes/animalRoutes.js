@@ -11,6 +11,7 @@ const router = require('express').Router();
 
 
 // I don't need /api/animals because Router function adds the /api for us
+// is actually /api/animals in server.js we added /api on app.use line 13
 router.get('/animals', (req, res) => {
     // I am using the send method from the response to send a string
 

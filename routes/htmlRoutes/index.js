@@ -3,10 +3,6 @@ const path = require('path');
 const router = require('express').Router();
 
 
-
-
-
-
 // public/index.html because it serves a webpage.
 // if it did more it would be /public/api/   
 router.get('/', (req, res)=> {

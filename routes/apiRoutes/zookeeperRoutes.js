@@ -9,7 +9,7 @@ const {
 
 }   = require("../../lib/zookeepers");
 
-const { zookeepers }   = require("../../data/zookeepers.json");
+const { zookeepers }   = require("../../data/zookeepers");
 //const { validateAnimal } = require("../../lib/animals");
 
 router.get("/zookeepers", (req, res) => {

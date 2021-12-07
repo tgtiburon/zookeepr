@@ -1,18 +1,11 @@
 
 const express = require('express');
-const fs = require('fs');
+
 // path is built into node.js API that makes working
 // with file systems more predictable.
-const path = require('path');  
+//const path = require('path');  
 
-const { animals }  = require('./data/animals');
-
-// require statment will read the index.js file in each
-// of the required locations
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
-
-
+//const { animals }  = require('./data/animals');
 
 // For heroku
 const PORT = process.env.PORT || 3001;
@@ -21,6 +14,15 @@ const PORT = process.env.PORT || 3001;
 // 1. instantiate the server
 // 2. listen for equests
 const app = express();
+
+// require statment will read the index.js file in each
+// of the required locations
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
+
+
+
+
 
 
 
